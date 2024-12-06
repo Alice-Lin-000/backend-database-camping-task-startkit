@@ -73,14 +73,16 @@ INSERT INTO "CREDIT_PACKAGE" (name, credit_amount, price) VALUES
     -- 2. `王小明` 購買 `21 堂組合包方案`
     -- 3. `好野人` 購買 `14 堂組合包方案`
 
+
 INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
 VALUES
-  (
-    (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'),
-    (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14堂組合包方案'),
-    (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14堂組合包方案'),
-    (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '14堂組合包方案')
-  );
+(
+  (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'),
+  (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+  (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+  (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
+);
+
 
 INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
 VALUES
@@ -206,7 +208,7 @@ WHERE name = '空中瑜伽';
     -- 6. 最大授課人數`max_participants` 設定為10
     -- 7. 授課連結設定`meeting_url`為 https://test-meeting.test.io
 
-INSERT INTO "COURSE" (user_id, skill_id, name, start_at, end_at, max_participants, meeting_url)
+INSERT INTO "COURSE" (coach_id, skill_id, name, start_at, end_at, max_participants, meeting_url)
 VALUES
 (
   (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io')),
@@ -217,6 +219,7 @@ VALUES
   10,
   'https://test-meeting.test.io'
 );
+
     
 -- ████████  █████   █    █████ 
 --   █ █   ██    █  █     █     
