@@ -73,7 +73,6 @@ INSERT INTO "CREDIT_PACKAGE" (name, credit_amount, price) VALUES
     -- 2. `王小明` 購買 `21 堂組合包方案`
     -- 3. `好野人` 購買 `14 堂組合包方案`
 
-
 INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
 VALUES
 (
@@ -82,8 +81,6 @@ VALUES
   (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
   (SELECT price FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
 );
-
-
 
 INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
 VALUES
