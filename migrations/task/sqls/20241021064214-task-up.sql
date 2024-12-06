@@ -15,7 +15,7 @@
 --     5. 用戶名稱為`Q太郎`，Email 為`starplatinum@hexschooltest.io`，Role為`USER`
 --     6. 用戶名稱為 透明人，Email 為 opacity0@hexschooltest.io，Role 為 USER
 
-INSERT INTO "USER" (name, email, role) VALUES
+INSERT INTO "USER" (name, email, ROLE) VALUES
 ('李燕容', 'lee2000@hexschooltest.io', 'USER'),
 ('王小明', 'wXlTq@hexschooltest.io', 'USER'),
 ('肌肉棒子', 'muscle@hexschooltest.io', 'USER'),
@@ -112,17 +112,17 @@ VALUES
     -- 1. 將用戶`李燕容`新增為教練，並且年資設定為2年（提示：使用`李燕容`的email ，取得 `李燕容` 的 `id` ）
 
 INSERT INTO "COACH" (user_id, experience_years) VALUES
-((SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io'), 2)
+((SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io'), 2);
 
     -- 2. 將用戶`肌肉棒子`新增為教練，並且年資設定為2年
 
 INSERT INTO "COACH" (user_id, experience_years) VALUES
-((SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io'), 2)
+((SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io'), 2);
 
     -- 3. 將用戶`Q太郎`新增為教練，並且年資設定為2年
 
 INSERT INTO "COACH" (user_id, experience_years) VALUES
-((SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io'), 2)
+((SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io'), 2);
 
 -- 3-2. 新增：承1，為三名教練新增專長資料至 `COACH_LINK_SKILL` ，資料需求如下：
     -- 1. 所有教練都有 `重訓` 專長
@@ -156,12 +156,12 @@ INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id) VALUES
 
 INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
 SELECT 
-  (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'qtarou@hexschooltest.io')),
+  (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
   (SELECT id FROM "SKILL" WHERE name = '有氧運動');
 
 INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
 SELECT 
-  (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'qtarou@hexschooltest.io')),
+  (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
   (SELECT id FROM "SKILL" WHERE name = '復健訓練');
 
 -- 3-3 修改：更新教練的經驗年數，資料需求如下：
@@ -217,7 +217,7 @@ VALUES
   10,
   'https://test-meeting.test.io'
 );
-
+    
 -- ████████  █████   █    █████ 
 --   █ █   ██    █  █     █     
 --   █ █████ ███ ███      ████  
